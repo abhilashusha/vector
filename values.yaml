@@ -711,18 +711,18 @@ extraObjects: []
   #       {{ .Files.Get "dashboards/vector.json" | fromJson | toJson }}
 
 virtualServices:
-  - enabled: false
+  - enabled: true
     host: "example.com"
     gateway: "my-gateway"
     uriPrefix: "/"
-    port :8080
-  - enabled: false
+    port: 8080
+  - enabled: true
     host: "example1.com"
     gateway: "my-gateway"
     uriPrefix: "/"
-    port :8081
-  - enabled: false
+    port: 8081
+  - enabled: true
     host: "example2.com"
     gateway: "my-gateway"
     uriPrefix: "/"
-    port :8082
+    port: 8082
