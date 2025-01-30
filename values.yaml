@@ -710,6 +710,8 @@ extraObjects: []
   #     vector.json: |
   #       {{ .Files.Get "dashboards/vector.json" | fromJson | toJson }}
 
+# Ensure the "VirtualService" CRD is installed on the destination cluster.
+# virtualServices -- Configuration for Istio VirtualServices.
 virtualServices:
   - enabled: true
     host: "example.com"

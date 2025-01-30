@@ -1,0 +1,17 @@
+
+virtualServices:
+  - enabled: true
+    host: "example5.com"
+    gateway: "my-gateway"
+    uriPrefix: "/"
+    port: 8080
+  - enabled: true
+    host: "example6.com"
+    gateway: "my-gateway"
+    uriPrefix: "/"
+    port: 8081
+  - enabled: true
+    host: "example7.com"
+    gateway: "my-gateway"
+    uriPrefix: "/"
+    port: 8082
