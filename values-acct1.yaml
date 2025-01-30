@@ -1,4 +1,3 @@
-
 virtualServices:
   - enabled: true
     host: "example5.com"
