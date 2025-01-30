@@ -1,23 +1,24 @@
-{{- if .Values.virtualService -}}
-  {{- if .Values.virtualService.enabled | default false -}}
+{{- range .Values.virtualServices }}
+{{- if .enabled }}
 apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService
 metadata:
-  name: {{ include "vector.fullname" . }}
-  namespace: {{ .Release.Namespace }}
+  name: {{ .host | replace "." "-" }}
+  namespace: {{ $.Release.Namespace }}
 spec:
   hosts:
-    - {{ .Values.virtualService.host | default "example.com" }}
+    - {{ .host | quote }}
   gateways:
-    - {{ .Values.virtualService.gateway | default "my-gateway" }}
+    - {{ .gateway | quote }}
   http:
     - match:
         - uri:
-            prefix: {{ .Values.virtualService.uriPrefix | default "/" }}
+            prefix: {{ .uriPrefix }}
       route:
         - destination:
-            host: {{ include "vector.fullname" . }}
+            host: {{ include "vector.fullname" $ }}
             port:
-              number: {{ (index .Values.service.ports 0).port | default 80 }}
-  {{- end }}
+              number: {{ .port }}
+---
+{{- end }}
 {{- end }}

@@ -266,9 +266,12 @@ service:
     - name: http
       port: 8080
       targetPort: 8080
+    - name: hec
+      port: 8081
+      targetPort: 8081
     - name: hec-ack
-      port: 8088
-      targetPort: 8088
+      port: 8082
+      targetPort: 8082
       
   # service.externalTrafficPolicy -- Specify the [externalTrafficPolicy](https://kubernetes.io/docs/tasks/access-application-cluster/create-external-load-balancer/#preserving-the-client-source-ip).
   externalTrafficPolicy: ""
@@ -707,8 +710,19 @@ extraObjects: []
   #     vector.json: |
   #       {{ .Files.Get "dashboards/vector.json" | fromJson | toJson }}
 
-virtualService:
-  enabled: false
-  host: "example.com"
-  gateway: "my-gateway"
-  uriPrefix: "/"
+virtualServices:
+  - enabled: false
+    host: "example.com"
+    gateway: "my-gateway"
+    uriPrefix: "/"
+    port :8080
+  - enabled: false
+    host: "example1.com"
+    gateway: "my-gateway"
+    uriPrefix: "/"
+    port :8081
+  - enabled: false
+    host: "example2.com"
+    gateway: "my-gateway"
+    uriPrefix: "/"
+    port :8082
