@@ -712,19 +712,19 @@ extraObjects: []
 
 # Ensure the "VirtualService" CRD is installed on the destination cluster.
 # virtualServices -- Configuration for Istio VirtualServices.
-virtualServices:
-  - enabled: true
-    host: "example.com"
-    gateway: "my-gateway"
-    uriPrefix: "/"
-    port: 8080
-  - enabled: true
-    host: "example1.com"
-    gateway: "my-gateway"
-    uriPrefix: "/"
-    port: 8081
-  - enabled: true
-    host: "example2.com"
-    gateway: "my-gateway"
-    uriPrefix: "/"
-    port: 8082
+# virtualServices:
+#   - enabled: true
+#     host: "example.com"
+#     gateway: "my-gateway"
+#     uriPrefix: "/"
+#     port: 8080
+#   - enabled: true
+#     host: "example1.com"
+#     gateway: "my-gateway"
+#     uriPrefix: "/"
+#     port: 8081
+#   - enabled: true
+#     host: "example2.com"
+#     gateway: "my-gateway"
+#     uriPrefix: "/"
+#     port: 8082
