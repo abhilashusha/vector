@@ -263,15 +263,15 @@ service:
   #   - "*"
   # service.ports -- Manually set the Service ports, overriding automated generation of Service ports.
   ports:
-    - name: http
-      port: 8080
-      targetPort: 8080
-    - name: hec
+    # - name: http
+    #   port: 8080
+    #   targetPort: 8080
+    - name: hec-input
       port: 8081
       targetPort: 8081
-    - name: hec-ack
-      port: 8082
-      targetPort: 8082
+    # - name: hec-ack
+    #   port: 8082
+    #   targetPort: 8082
       
   # service.externalTrafficPolicy -- Specify the [externalTrafficPolicy](https://kubernetes.io/docs/tasks/access-application-cluster/create-external-load-balancer/#preserving-the-client-source-ip).
   externalTrafficPolicy: ""
@@ -351,23 +351,23 @@ customConfig:
       type: kubernetes_logs
       auto_partial_merge: true
       self_node_name: ${VECTOR_SELF_NODE_NAME}
-    http_input:
-      type: http
-      address: "0.0.0.0:8080"
-    hec_input:
+    # http_input:
+    #   type: http
+    #   address: "0.0.0.0:8080"
+    hec-input:
       type: "splunk_hec"
-      address: "0.0.0.0:8088"
+      address: "0.0.0.0:8081"
       #token: "123"
-      acknowledgements:
-        enabled: true  # Enable acknowledgements
+      # acknowledgements:
+      #   enabled: true  # Enable acknowledgements
 
   sinks:
     loki:
       type: loki
       inputs:
         - kubernetes_logs
-        - http_input
-        - hec_input
+    #    - http_input
+        - hec-input
       endpoint: "http://loki.loki.svc.cluster.local:3100" # Loki service DNS
       encoding:
         codec: json
