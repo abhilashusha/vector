@@ -366,7 +366,7 @@ customConfig:
       type: loki
       inputs:
         - kubernetes_logs
-        - http_input
+        - http
         - hec-input
       endpoint: "http://loki.loki.svc.cluster.local:3100" # Loki service DNS
       encoding:
