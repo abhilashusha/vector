@@ -263,7 +263,7 @@ service:
   #   - "*"
   # service.ports -- Manually set the Service ports, overriding automated generation of Service ports.
   ports:
-    - name: http
+    - name: http-input
       port: 8085
       targetPort: 8080
     - name: hec-input
@@ -351,9 +351,9 @@ customConfig:
       type: kubernetes_logs
       auto_partial_merge: true
       self_node_name: ${VECTOR_SELF_NODE_NAME}
-    # http_input:
-    #   type: http
-    #   address: "0.0.0.0:8080"
+    http-input:
+      type: http
+      address: "0.0.0.0:8085"
     hec-input:
       type: "splunk_hec"
       address: "0.0.0.0:8081"
@@ -366,7 +366,7 @@ customConfig:
       type: loki
       inputs:
         - kubernetes_logs
-        - http
+        - http-input
         - hec-input
       endpoint: "http://loki.loki.svc.cluster.local:3100" # Loki service DNS
       encoding:
