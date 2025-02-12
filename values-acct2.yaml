@@ -1,3 +1,4 @@
+fullnameOverride: "acct2"
 virtualServices:
   - enabled: true
     host: "example8.com"
