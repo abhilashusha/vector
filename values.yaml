@@ -714,7 +714,7 @@ extraObjects: []
 
 # Ensure the "VirtualService" CRD is installed on the destination cluster.
 # virtualServices -- Configuration for Istio VirtualServices.
- virtualServices:
+virtualServices:
    - enabled: true
      host: "example.com"
      gateway: "my-gateway"
