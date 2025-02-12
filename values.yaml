@@ -357,6 +357,8 @@ customConfig:
     hec-input:
       type: "splunk_hec"
       address: "0.0.0.0:8081"
+      tls:
+        enabled: false
       #token: "123"
       # acknowledgements:
       #   enabled: true  # Enable acknowledgements
